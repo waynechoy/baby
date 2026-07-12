@@ -333,7 +333,7 @@ body.lock-scroll{
 
     border:none;
 
-    padding:55px 45px;
+    padding:15px 45px;
 
     max-width:500px;
 
@@ -415,7 +415,44 @@ audio{
 
 }
 
+.shower-photo{
 
+    width:min(450px,85vw);
+
+    margin-bottom:45px;
+
+}
+
+.rsvp-button{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:16px 45px;
+
+    border-radius:50px;
+
+    background:#222;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:1.1rem;
+
+    transition:transform .3s ease, opacity .3s ease;
+
+}
+
+
+.rsvp-button:hover{
+
+    transform:translateY(-3px);
+
+    opacity:.8;
+
+}
 
 
 
@@ -660,28 +697,32 @@ onclick="scrollToSection('shower')">
 <!-- Baby Shower -->
 <section class="fade" id="shower">
 
-  <div class="card" style="width:100%; max-width:1000px; margin:0 auto;">
+<img 
+src="celebrate.png"
+class="shower-photo"
+alt="Baby shower">
 
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSd68KKfDX7KEYW5veC318QOhk2PyJw9R34fE0XZe0FjTv_0DA/viewform?usp=publish-editor"
-      width="100%"
-      height="900"
-      frameborder="0">
-    </iframe>
+<div class="card">
 
-  </div>
 
-  
-    <div
+<a 
+href="https://docs.google.com/forms/d/e/1FAIpQLSd68KKfDX7KEYW5veC318QOhk2PyJw9R34fE0XZe0FjTv_0DA/viewform"
+target="_blank"
+class="rsvp-button">
+rsvp
+</a>
 
-    class="arrow"
+</div>
 
-    onclick="scrollToSection('footer')">
+<div
 
-    ↓
+class="arrow"
 
-    </div>
+onclick="scrollToSection('footer')">
 
+↓
+
+</div>
 
 </section>
 
