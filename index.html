@@ -127,6 +127,11 @@ p{
 }
 
 
+body.lock-scroll{
+    overflow:hidden;
+}
+
+
 
 @keyframes bounce{
 
@@ -273,10 +278,22 @@ p{
 
     letter-spacing:.1em;
 
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:opacity 1.5s ease, transform 1.5s ease;
+
+
 }
 
+.reveal-date.show{
 
+    opacity:1;
 
+    transform:translateY(0);
+
+}
 
 
 .reveal-arrow{
@@ -308,9 +325,7 @@ p{
 
 .card{
 
-    border:1px solid #eee;
-
-    border-radius:24px;
+    border:none;
 
     padding:55px 45px;
 
@@ -451,19 +466,17 @@ this year
 
 <div class="memory-photos">
 
-
 <img src="photo1.jpg" class="memory-photo">
-
-<img src="photo2.jpg" class="memory-photo">
 
 <img src="photo3.jpg" class="memory-photo">
 
-<img src="photo4.jpg" class="memory-photo">
-
 <img src="photo5.jpg" class="memory-photo">
 
-<img src="photo6.jpg" class="memory-photo">
+<img src="photo2.jpg" class="memory-photo">
 
+<img src="photo4.jpg" class="memory-photo">
+
+<img src="photo6.jpg" class="memory-photo">
 
 </div>
 
@@ -556,7 +569,7 @@ poster="sonogram.jpg">
 
 
 
-<p class="reveal-date">
+<p class="reveal-date hidden">
 
 coming january 2027
 
@@ -708,8 +721,12 @@ ellie + wayne
    Navigation
 ========================= */
 
+document.body.classList.add("lock-scroll");
+
 
 function beginExperience(){
+
+    document.body.classList.remove("lock-scroll");
 
     startMusic();
 
@@ -868,32 +885,17 @@ sectionObserver.observe(section);
 ========================= */
 
 
+/* =========================
+   Memory Photos
+========================= */
+
+
 const photos = document.querySelectorAll(".memory-photo");
 
 const photoContainer = document.querySelector(".memory-photos");
 
 
 let photosShown = false;
-
-
-
-// Custom order: 1,3,5,2,4,6
-
-const photoOrder = [
-
-    0, // photo1
-
-    2, // photo3
-
-    4, // photo5
-
-    1, // photo2
-
-    3, // photo4
-
-    5  // photo6
-
-];
 
 
 
@@ -906,34 +908,34 @@ const photoObserver = new IntersectionObserver(
 entries.forEach(entry=>{
 
 
-if(entry.isIntersecting && !photosShown){
+    if(entry.isIntersecting && !photosShown){
 
 
-    photosShown = true;
-
-
-
-    photoOrder.forEach((photoIndex, sequence)=>{
-
-
-        setTimeout(()=>{
-
-
-            photos[photoIndex].classList.add("show");
-
-
-        }, sequence * 950);
+        photosShown = true;
 
 
 
-    });
+        photos.forEach((photo,index)=>{
 
 
-    photoObserver.disconnect();
+            setTimeout(()=>{
 
 
-}
+                photo.classList.add("show");
 
+
+            }, index * 950);
+
+
+
+        });
+
+
+
+        photoObserver.disconnect();
+
+
+    }
 
 
 });
@@ -946,6 +948,7 @@ if(entry.isIntersecting && !photosShown){
 threshold:0.3
 
 }
+
 
 );
 
@@ -968,6 +971,8 @@ photoObserver.observe(photoContainer);
 const video = document.getElementById("sonogram-video");
 
 const sonogramArrow = document.getElementById("sonogram-arrow");
+
+const revealDate = document.querySelector(".reveal-date");
 
 
 let videoStarted = false;
@@ -1003,11 +1008,21 @@ if(entry.isIntersecting && !videoStarted){
 
 
 
+    // Show date after 3 seconds
+
     setTimeout(()=>{
 
+        revealDate.classList.add("show");
+
+    },3000);
+
+
+
+    // Show arrow after 7 seconds
+
+    setTimeout(()=>{
 
         sonogramArrow.classList.add("show");
-
 
     },7000);
 
