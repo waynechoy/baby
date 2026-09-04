@@ -468,6 +468,50 @@ audio{
 
 }
 
+/* Baby Registry */
+
+.registry{
+    text-align:center;
+}
+
+.registry h2{
+    margin-bottom:15px;
+}
+
+.registry p{
+    margin-top:0;
+    margin-bottom:30px;
+}
+
+.registry-qr{
+    width:min(260px,70vw);
+    border-radius:12px;
+    cursor:pointer;
+    transition:transform .3s ease, opacity .3s ease;
+}
+
+.registry-qr:hover{
+    transform:scale(1.03);
+    opacity:.85;
+}
+
+.registry-link{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 35px;
+    border-radius:50px;
+    background:#222;
+    color:white;
+    text-decoration:none;
+    font-size:1rem;
+    transition:transform .3s ease, opacity .3s ease;
+}
+
+.registry-link:hover{
+    transform:translateY(-3px);
+    opacity:.8;
+}
+
 
 </style>
 
@@ -718,7 +762,7 @@ rsvp
 
 class="arrow"
 
-onclick="scrollToSection('footer')">
+onclick="scrollToSection('registry')">
 
 ↓
 
@@ -726,6 +770,53 @@ onclick="scrollToSection('footer')">
 
 </section>
 
+
+
+<!-- Baby Registry -->
+
+<section class="fade" id="registry">
+
+    <div class="registry">
+
+        <p>
+            if you'd like to help us get ready for baby ♡
+        </p>
+
+        <a
+            href="https://my.babylist.com/wayne-choy"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <img
+                src="registry-qr.png"
+                class="registry-qr"
+                alt="Baby registry QR code">
+
+        </a>
+
+        <br>
+
+        <a
+            href="https://my.babylist.com/wayne-choy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="registry-link">
+
+            view registry
+
+        </a>
+
+    </div>
+
+    <div
+        class="arrow"
+        onclick="scrollToSection('footer')">
+
+        ↓
+
+    </div>
+
+</section>
 
 
 
